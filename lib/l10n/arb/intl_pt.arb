@@ -1,0 +1,7 @@
+{
+  "errorAccessDenied": "Acesso negado.",
+  "errorNotFound": "Endereço não encontrado.",
+  "errorTimeout": "O Servidor demorou a responder. Tente novamente mais tarde ou entre em contato conosco.",
+  "errorTokenExpired": "Seu login expirou. Faça login e tente novamente.",
+  "errorUnknowError": "Ocorreu um erro desconhecido."
+}

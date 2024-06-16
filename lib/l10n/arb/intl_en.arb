@@ -1,0 +1,7 @@
+{
+  "errorAccessDenied": "Access Denied",
+  "errorNotFound": "Url not found.",
+  "errorTimeout": "The server took a long time to respond. Please try again later or contact us.",
+  "errorTokenExpired": "Your login expired. Please, login and try again.",
+  "errorUnknowError": "An unknown exception occurred."
+}
