@@ -30,7 +30,7 @@ class ApiResponse {
           if (status404 != null) {
             status404();
           }
-          throw ClientError(message ?? CoreLocalizations.current.errorNotFound);
+          throw ClientError(message ?? KaziLocalizations.current.errorNotFound);
         }
       case 403:
         {
@@ -38,7 +38,8 @@ class ApiResponse {
             status403();
           }
           throw ClientError(
-              message ?? CoreLocalizations.current.errorAccessDenied);
+            message ?? KaziLocalizations.current.errorAccessDenied,
+          );
         }
       case 401:
         {
@@ -46,7 +47,8 @@ class ApiResponse {
             status401();
           }
           throw ClientError(
-              message ?? CoreLocalizations.current.errorTokenExpired);
+            message ?? KaziLocalizations.current.errorTokenExpired,
+          );
         }
       case 400:
         {
@@ -54,14 +56,15 @@ class ApiResponse {
             status400();
           }
           throw ClientError(
-              message ?? CoreLocalizations.current.errorUnknowError);
+            message ?? KaziLocalizations.current.errorUnknowError,
+          );
         }
       case 408:
         {
           if (status408 != null) {
             status408();
           }
-          throw TimeoutError(message ?? CoreLocalizations.current.errorTimeout);
+          throw TimeoutError(message ?? KaziLocalizations.current.errorTimeout);
         }
       case 500:
         {
@@ -69,7 +72,8 @@ class ApiResponse {
             status500();
           }
           throw ExternalError(
-              message ?? CoreLocalizations.current.errorUnknowError);
+            message ?? KaziLocalizations.current.errorUnknowError,
+          );
         }
     }
   }

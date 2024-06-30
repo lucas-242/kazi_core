@@ -106,7 +106,10 @@ abstract class Log {
   }
 
   static void _logStackTrace(
-      StackTrace? stackTrace, String type, LogColor color) {
+    StackTrace? stackTrace,
+    String type,
+    LogColor color,
+  ) {
     if (stackTrace != null) {
       developer.log(
         '''\x1B[${_logColors[color]}m. StackTrace: ${stackTrace.toString()} \x1B[0m''',
