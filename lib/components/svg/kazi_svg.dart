@@ -8,7 +8,7 @@ class KaziSvg extends StatelessWidget {
     this.height,
     this.width,
     this.color,
-    this.package = 'kazi_design_system',
+    this.package = 'kazi_core',
   });
   final String svg;
   final Color? color;
