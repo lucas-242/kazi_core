@@ -9,7 +9,7 @@ mixin BaseCubit<T extends BaseState> on Cubit<T> {
     emit(
       state.copyWith(
         callbackMessage: error.message,
-        status: BaseStateStatus.error,
+        status: StateStatus.error,
       ) as T,
     );
   }
@@ -18,7 +18,7 @@ mixin BaseCubit<T extends BaseState> on Cubit<T> {
     emit(
       state.copyWith(
         callbackMessage: KaziLocalizations.current.errorUnknowError,
-        status: BaseStateStatus.error,
+        status: StateStatus.error,
       ) as T,
     );
   }

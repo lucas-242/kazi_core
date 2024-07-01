@@ -1,9 +1,16 @@
-enum BaseStateStatus { loading, error, success, noData, initial }
+enum StateStatus { loading, error, success, noData, initial }
+
+enum ViewState { create, read, update }
 
 class BaseState {
-  BaseState({required this.status, this.callbackMessage = ''});
-  BaseStateStatus status;
-  String callbackMessage;
+  BaseState({
+    required this.status,
+    this.callbackMessage = '',
+    this.viewState = ViewState.read,
+  });
+  final StateStatus status;
+  final String callbackMessage;
+  final ViewState viewState;
 
   T when<T>({
     required T Function(BaseState state) onState,
@@ -13,13 +20,13 @@ class BaseState {
     T Function()? onNoData,
   }) {
     switch (status) {
-      case BaseStateStatus.loading:
+      case StateStatus.loading:
         return onLoading != null ? onLoading() : onState(this);
-      case BaseStateStatus.noData:
+      case StateStatus.noData:
         return onNoData != null ? onNoData() : onState(this);
-      case BaseStateStatus.error:
+      case StateStatus.error:
         return onError != null ? onError(this) : onState(this);
-      case BaseStateStatus.initial:
+      case StateStatus.initial:
         return onInitial != null ? onInitial(this) : onState(this);
       default:
         return onState(this);
@@ -27,12 +34,14 @@ class BaseState {
   }
 
   BaseState copyWith({
-    BaseStateStatus? status,
+    StateStatus? status,
     String? callbackMessage,
+    ViewState? viewState,
   }) {
     return BaseState(
       status: status ?? this.status,
       callbackMessage: callbackMessage ?? this.callbackMessage,
+      viewState: viewState ?? this.viewState,
     );
   }
 }
