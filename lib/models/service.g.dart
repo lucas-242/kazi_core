@@ -7,14 +7,14 @@ part of 'service.dart';
 // **************************************************************************
 
 Service _$ServiceFromJson(Map<String, dynamic> json) => Service._(
-      id: json['id'] as int,
+      id: (json['id'] as num).toInt(),
       description: json['description'] as String?,
       value: (json['value'] as num).toDouble(),
       discountPercent: (json['discountPercent'] as num).toDouble(),
       serviceType: json['serviceType'] == null
           ? null
           : ServiceType.fromJson(json['serviceType'] as Map<String, dynamic>),
-      serviceTypeId: json['serviceTypeId'] as int,
+      serviceTypeId: (json['serviceTypeId'] as num).toInt(),
       scheduledToStartAt: DateTime.parse(json['scheduledToStartAt'] as String),
       scheduledToEndAt: DateTime.parse(json['scheduledToEndAt'] as String),
       startedAt: json['startedAt'] == null
@@ -23,7 +23,7 @@ Service _$ServiceFromJson(Map<String, dynamic> json) => Service._(
       endedAt: json['endedAt'] == null
           ? null
           : DateTime.parse(json['endedAt'] as String),
-      employeeId: json['employeeId'] as int,
-      scheduledBy: json['scheduledBy'] as int,
-      customerId: json['customerId'] as int?,
+      employeeId: (json['employeeId'] as num).toInt(),
+      scheduledBy: (json['scheduledBy'] as num).toInt(),
+      customerId: (json['customerId'] as num?)?.toInt(),
     );

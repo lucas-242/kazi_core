@@ -17,8 +17,8 @@ ServicesFilter _$ServicesFilterFromJson(Map<String, dynamic> json) =>
       orderBy: $enumDecodeNullable(_$OrderByEnumMap, json['orderBy']) ??
           OrderBy.dateDesc,
       isActive: json['isActive'] as bool? ?? true,
-      pageSize: json['pageSize'] as int? ?? 10,
-      pageNumber: json['pageNumber'] as int? ?? 0,
+      pageSize: (json['pageSize'] as num?)?.toInt() ?? 10,
+      pageNumber: (json['pageNumber'] as num?)?.toInt() ?? 0,
     );
 
 Map<String, dynamic> _$ServicesFilterToJson(ServicesFilter instance) =>
