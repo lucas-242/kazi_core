@@ -1,4 +1,5 @@
 {
+  "actions": "Ações",
   "add": "Adicionar",
   "address": "Endereço",
   "all": "Todos",
@@ -10,6 +11,7 @@
   "calendar": "Calendário",
   "cancel": "Cancelar",
   "changePassword": "Alterar Senha",
+  "clients": "Clientes",
   "clipperCut": "Corte na máquina",
   "create": "Criar",
   "createAccount": "Crie uma Conta",

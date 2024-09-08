@@ -50,6 +50,16 @@ class KaziLocalizations {
     return Localizations.of<KaziLocalizations>(context, KaziLocalizations);
   }
 
+  /// `Actions`
+  String get actions {
+    return Intl.message(
+      'Actions',
+      name: 'actions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add`
   String get add {
     return Intl.message(
@@ -155,6 +165,16 @@ class KaziLocalizations {
     return Intl.message(
       'Change Password',
       name: 'changePassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Clients`
+  String get clients {
+    return Intl.message(
+      'Clients',
+      name: 'clients',
       desc: '',
       args: [],
     );
