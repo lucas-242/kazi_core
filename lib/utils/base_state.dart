@@ -13,23 +13,23 @@ class BaseState {
   final ViewState viewState;
 
   T when<T>({
-    required T Function(BaseState state) onState,
-    T Function(BaseState state)? onInitial,
-    T Function(BaseState error)? onError,
+    required T Function() onState,
+    T Function()? onInitial,
+    T Function()? onError,
     T Function()? onLoading,
     T Function()? onNoData,
   }) {
     switch (status) {
       case StateStatus.loading:
-        return onLoading != null ? onLoading() : onState(this);
+        return onLoading != null ? onLoading() : onState();
       case StateStatus.noData:
-        return onNoData != null ? onNoData() : onState(this);
+        return onNoData != null ? onNoData() : onState();
       case StateStatus.error:
-        return onError != null ? onError(this) : onState(this);
+        return onError != null ? onError() : onState();
       case StateStatus.initial:
-        return onInitial != null ? onInitial(this) : onState(this);
+        return onInitial != null ? onInitial() : onState();
       default:
-        return onState(this);
+        return onState();
     }
   }
 
