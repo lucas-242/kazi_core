@@ -1,7 +1,7 @@
 import 'package:kazi_core/domain/entities/user.dart';
 import 'package:kazi_core/domain/enums/user_type.dart';
+import 'package:kazi_core/domain/errors.dart';
 import 'package:kazi_core/domain/repositories/users_repository.dart';
-import 'package:kazi_core/errors/errors.dart';
 
 final class ApiUsersRepository implements UsersRepository {
   @override

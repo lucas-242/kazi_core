@@ -1,8 +1,8 @@
 import 'package:kazi_core/domain/entities/user.dart';
 import 'package:kazi_core/domain/enums/user_type.dart';
+import 'package:kazi_core/domain/errors.dart';
 import 'package:kazi_core/domain/repositories/users_repository.dart';
-import 'package:kazi_core/errors/errors.dart';
-import 'package:kazi_core/utils/log_utils.dart';
+import 'package:kazi_core/shared/utils/log_utils.dart';
 
 class GetEmployeesUseCase {
   GetEmployeesUseCase(this._usersRepository);
