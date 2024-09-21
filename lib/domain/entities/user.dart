@@ -1,13 +1,10 @@
 import 'package:equatable/equatable.dart';
-import 'package:json_annotation/json_annotation.dart';
-import 'package:kazi_core/kazi_core.dart';
-import 'package:kazi_core/models/address.dart';
+import 'package:kazi_core/domain/entities/address.dart';
+import 'package:kazi_core/domain/entities/service_type.dart';
+import 'package:kazi_core/domain/enums/user_type.dart';
 
-part 'user.g.dart';
-
-@JsonSerializable(constructor: '_')
 class User extends Equatable {
-  const User._({
+  const User({
     required this.id,
     required this.name,
     required this.email,
@@ -15,48 +12,14 @@ class User extends Equatable {
     required this.userType,
     required this.identifier,
     this.role,
-    required this.services,
-    required this.addresses,
+    this.services = const [],
+    this.addresses = const [],
     this.phones = const <String>[],
-    required this.password,
+    this.password,
     required this.authToken,
     required this.refreshToken,
     required this.authExpires,
   });
-
-  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
-
-  User.toCreate({
-    this.id = 0,
-    this.name = '',
-    this.email = '',
-    this.photoUrl,
-    this.userType = UserType.selfEmployed,
-    this.identifier = '',
-    this.role,
-    this.services = const [],
-    this.addresses = const [],
-    this.phones = const [],
-    this.password = '',
-  })  : refreshToken = '',
-        authToken = '',
-        authExpires = DateTime(1999);
-
-  const User.fromSignIn({
-    required this.id,
-    required this.name,
-    required this.email,
-    this.photoUrl,
-    required this.userType,
-    required this.identifier,
-    required this.role,
-    required this.services,
-    required this.addresses,
-    required this.phones,
-    required this.authToken,
-    required this.refreshToken,
-    required this.authExpires,
-  }) : password = '';
 
   final int id;
   final String name;
@@ -81,17 +44,12 @@ class User extends Equatable {
 
   final UserType userType;
 
-  @JsonKey(defaultValue: '')
-  final String password;
-  @JsonKey(name: 'authenticationToken')
+  final String? password;
   final String authToken;
   final String refreshToken;
-  @JsonKey(name: 'expires')
   final DateTime authExpires;
 
   String get shortName => name.length > 18 ? name.split('').first : name;
-
-  Map<String, dynamic> toJson() => _$UserToJson(this);
 
   User copyWith({
     String? name,
@@ -109,7 +67,7 @@ class User extends Equatable {
     String? refreshToken,
     DateTime? authExpires,
   }) {
-    return User._(
+    return User(
       name: name ?? this.name,
       email: email ?? this.email,
       photoUrl: photoUrl ?? this.photoUrl,
@@ -144,12 +102,4 @@ class User extends Equatable {
         authExpires,
         refreshToken,
       ];
-}
-
-enum UserType {
-  administrator,
-  manager,
-  selfEmployed,
-  employee,
-  client,
 }
