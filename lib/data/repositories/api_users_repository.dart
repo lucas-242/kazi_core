@@ -2,6 +2,7 @@ import 'package:kazi_core/domain/entities/user.dart';
 import 'package:kazi_core/domain/enums/user_type.dart';
 import 'package:kazi_core/domain/errors.dart';
 import 'package:kazi_core/domain/models/create_user_params.dart';
+import 'package:kazi_core/domain/models/get_users_params.dart';
 import 'package:kazi_core/domain/models/update_user_params.dart';
 import 'package:kazi_core/domain/repositories/users_repository.dart';
 
@@ -31,17 +32,27 @@ final class ApiUsersRepository implements UsersRepository {
   }
 
   @override
-  Future<List<User>> get({
-    required UserType userType,
-    int limit = 10,
-    int offset = 1,
-  }) async {
+  Future<List<User>> get(GetUsersParams params) async {
     try {
       await Future.delayed(const Duration(seconds: 2));
 
-      return _employeesMock.where((user) => user.userType == userType).toList();
+      Iterable<User> response = <User>[];
+
+      if (params.userType != null) {
+        response =
+            _employeesMock.where((user) => user.userType == params.userType);
+      }
+
+      if (params.name != null) {
+        response = _employeesMock.where((user) => user.name == params.name);
+      }
+
+      return response.toList();
     } catch (error, trace) {
-      throw ExternalError('Error to get ${userType.name}s', trace: trace);
+      throw ExternalError(
+        'Error to get user with filters: $params',
+        trace: trace,
+      );
     }
   }
 
