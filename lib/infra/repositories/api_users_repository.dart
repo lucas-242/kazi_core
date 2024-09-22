@@ -1,9 +1,22 @@
 import 'package:kazi_core/domain/entities/user.dart';
 import 'package:kazi_core/domain/enums/user_type.dart';
 import 'package:kazi_core/domain/errors.dart';
+import 'package:kazi_core/domain/models/create_user_params.dart';
 import 'package:kazi_core/domain/repositories/users_repository.dart';
 
 final class ApiUsersRepository implements UsersRepository {
+  @override
+  Future<void> create(CreateUserParams params) async {
+    try {
+      await Future.delayed(const Duration(seconds: 4));
+    } catch (error, trace) {
+      throw ExternalError(
+        'Error to create user with identifier: ${params.identifier}',
+        trace: trace,
+      );
+    }
+  }
+
   @override
   Future<List<User>> get({
     required UserType userType,
