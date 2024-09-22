@@ -19,6 +19,18 @@ final class ApiUsersRepository implements UsersRepository {
   }
 
   @override
+  Future<void> delete(int userId) async {
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+    } catch (error, trace) {
+      throw ExternalError(
+        'Error to create user with id: $userId',
+        trace: trace,
+      );
+    }
+  }
+
+  @override
   Future<List<User>> get({
     required UserType userType,
     int limit = 10,

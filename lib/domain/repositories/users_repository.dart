@@ -6,6 +6,8 @@ import 'package:kazi_core/domain/models/update_user_params.dart';
 abstract interface class UsersRepository {
   Future<void> create(CreateUserParams params);
 
+  Future<void> delete(int userId);
+
   Future<List<User>> get({
     required UserType userType,
     int limit = 10,
