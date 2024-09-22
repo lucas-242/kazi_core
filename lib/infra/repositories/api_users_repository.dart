@@ -2,6 +2,7 @@ import 'package:kazi_core/domain/entities/user.dart';
 import 'package:kazi_core/domain/enums/user_type.dart';
 import 'package:kazi_core/domain/errors.dart';
 import 'package:kazi_core/domain/models/create_user_params.dart';
+import 'package:kazi_core/domain/models/update_user_params.dart';
 import 'package:kazi_core/domain/repositories/users_repository.dart';
 
 final class ApiUsersRepository implements UsersRepository {
@@ -29,6 +30,18 @@ final class ApiUsersRepository implements UsersRepository {
       return _employeesMock.where((user) => user.userType == userType).toList();
     } catch (error, trace) {
       throw ExternalError('Error to get ${userType.name}s', trace: trace);
+    }
+  }
+
+  @override
+  Future<void> update(UpdateUserParams params) async {
+    try {
+      await Future.delayed(const Duration(seconds: 4));
+    } catch (error, trace) {
+      throw ExternalError(
+        'Error to update user with params: $params',
+        trace: trace,
+      );
     }
   }
 }
