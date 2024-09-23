@@ -10,5 +10,7 @@ abstract interface class UsersRepository {
 
   Future<List<User>> get(GetUsersParams params);
 
+  Future<User> getById(int userId);
+
   Future<void> update(UpdateUserParams params);
 }

@@ -57,6 +57,16 @@ final class ApiUsersRepository implements UsersRepository {
   }
 
   @override
+  Future<User> getById(int userId) async {
+    try {
+      await Future.delayed(const Duration(seconds: 2));
+      return _employeesMock.firstWhere((user) => user.id == userId);
+    } catch (error, trace) {
+      throw ExternalError('Error to get user with id: $userId', trace: trace);
+    }
+  }
+
+  @override
   Future<void> update(UpdateUserParams params) async {
     try {
       await Future.delayed(const Duration(seconds: 4));
