@@ -51,8 +51,10 @@ export 'presenter/components/snack_bar/kazi_snack_bar.dart';
 export 'presenter/components/snack_bar/kazi_snack_bar_type.dart';
 export 'presenter/components/svg/kazi_svg.dart';
 export 'presenter/components/webview/kazi_webview.dart';
-//Shared
 export 'shared/extensions/extensions.dart';
+//Shared
+export 'shared/injection/service_injector.dart';
+export 'shared/injection/service_locator.dart';
 export 'shared/l10n/generated/l10n.dart';
 export 'shared/themes/themes.dart';
 export 'shared/utils/base_cubit.dart';
