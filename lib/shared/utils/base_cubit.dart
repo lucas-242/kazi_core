@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:kazi_core/domain/errors.dart';
 import 'package:kazi_core/shared/l10n/generated/l10n.dart';
+import 'package:kazi_core/shared/models/errors.dart';
 
 import 'base_state.dart';
 
